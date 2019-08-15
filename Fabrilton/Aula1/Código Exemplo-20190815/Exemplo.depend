@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1407934868 source:c:\nilton\unb\2014_2\disciplinas\eda\aula_02\codigos\exemplo\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ICC_lib.c"
+
+1364925568 c:\nilton\unb\2014_2\disciplinas\eda\aula_02\codigos\exemplo\bibliotecas\icc_lib.c
+
