@@ -69,7 +69,7 @@ int main(){
         exibir();
         break;
       default:
-        return 0;
+        return d++;
     }
 
   }

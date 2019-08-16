@@ -12,7 +12,7 @@ int main(){
     for(int i=0;i<10;i++){
         scanf("%d",&vet[i]);
         if (vet[i] == x){
-          printf("%d ", i);
+          printf("v[%d] ", i);
         }
 
     }
