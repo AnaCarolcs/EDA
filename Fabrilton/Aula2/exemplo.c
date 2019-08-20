@@ -11,7 +11,7 @@ printf("O endereço apontado pelo ponteiro ptr_n é %x e o valor do conteúdo de
 
 }*/
 
-void main(){
+/*void main(){
 
   int lista[5] = {10, 20, 30, 40, 50};
   int i = 0;
@@ -21,6 +21,32 @@ void main(){
   printf("Valor da posição %d do endereço %x é igual a %d\n",i+1, (lista+i+1), *(lista+i+1) );
 
   //printf("%d\n", lista[3]);
+
+}*/
+
+void main(){
+
+int *ptr, lista[5] = {10, 20, 30, 40, 50};
+
+ptr = lista;
+
+printf("O valor do conteúdo de ptr é: %d\n", ptr);
+
+ptr = ptr + 1;
+
+printf("O valor do conteúdo de ptr é: %d\n", ptr);
+
+ptr = ptr + 3;
+
+printf("O valor do conteúdo de ptr é: %d\n", ptr);
+
+ptr = ptr - 1;
+
+printf("O valor do conteúdo de ptr é: %d\n", ptr);
+
+ptr = ptr - 1;
+
+printf("O valor do conteúdo de ptr é: %d\n", ptr);
 
 }
 
