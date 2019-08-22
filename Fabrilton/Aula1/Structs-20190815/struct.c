@@ -15,7 +15,7 @@ void incluir(){
     printf(" Digite codigo: ");
     scanf("%d", &p[i].codigo);
     printf(" Digite nome: ");
-    scanf("%s", &p[i].nome);
+    scanf("%s", p[i].nome);
     printf(" Digite idade: ");
     scanf("%d", &p[i].idade);
     printf(" Digite altura: ");
@@ -51,22 +51,22 @@ void alterar(){
       printf(" \n Cadastro não encontrado! ");
     } else {
       printf(" Digite novo codigo: ");
-      scanf("%d%", &p[i].codigo);
+      scanf("%d", &p[i].codigo);
       printf(" Digite novo nome: ");
-      scanf("%s%", &p[i].nome);
+      scanf("%s", p[i].nome);
       printf(" Digite nova idade: ");
-      scanf("%d%", &p[i].idade);
+      scanf("%d", &p[i].idade);
       printf(" Digite nova altura: ");
-      scanf("%f%", &p[i].altura);
+      scanf("%f", &p[i].altura);
     }
     return;
 }
 
 void listar(){
   for(int i=0; i<3; i++) {
-    printf(" \n Codigo: %s ", p[i].codigo);
-    printf(" \n Nome: %d ", p[i].nome);
-    printf(" \n Idade: %s ", p[i].idade);
+    printf(" \n Codigo: %d ", p[i].codigo);
+    printf(" \n Nome: %s ", p[i].nome);
+    printf(" \n Idade: %d ", p[i].idade);
     printf(" \n Altura: %.2f \n", p[i].altura);
   }
   return;
@@ -79,7 +79,7 @@ void main(){
 
   while (d == 1) {
 
-  printf("O que vc deseja fazer? \n(1) Incluir \n(2) Excluir \n(3) Alterar\n(4) Listar\n");
+  printf("\nO que vc deseja fazer? \n(1) Incluir \n(2) Excluir \n(3) Alterar\n(4) Listar\n(5)Sair\n");
   scanf("%d", &opcao);
 
   switch (opcao){
@@ -94,6 +94,9 @@ void main(){
         break;
       case 4: //listar
         listar();
+        break;
+      case 5: //listar
+        return 0;
         break;
       default:
         return;
