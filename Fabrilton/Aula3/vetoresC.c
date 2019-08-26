@@ -20,11 +20,10 @@ float* criaVetFloat(){
 
 int main(){
 
-  int sizeInt;
-  float sizeFloat;
+  int size;
 
-  criaVetInt(sizeInt);
-  criaVetFloat(sizeFloat);
+  criaVetInt(size);
+  criaVetFloat(size);
 
   return 0;
 }
