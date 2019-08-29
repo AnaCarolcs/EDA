@@ -17,7 +17,15 @@ void incluir(char pvetcar[], int ptammaxe, int pqtde){
 }
 
 void deletar(char pvetcar[], int ptammaxe, int pqtde){
-
+  char letra;
+  scanf("%c", &letra);
+  for (int i = 0; i < ptammaxe; ++i){
+    if (pvetcar[i] == letra){
+       for(j=i; j<ptammaxe-1; j++){
+          pvetcar[j] = pvetcar[j+1];
+       }
+    }
+  }
 }
 
 int main(){
