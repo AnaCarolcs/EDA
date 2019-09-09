@@ -1,21 +1,23 @@
 #include<stdio.h>
 
-float media(float vetor[]){
-  float medias[300];
+void media(float vetor[], float media[]){
+  float * medias = calloc(sizeof(float*) * 300);
   for(int i = 1; i < 299; i++){
       medias[i] = (vetor[i-1] + vetor[i] + vetor[i+1])/3;
   }
-  return
 }
 
-void alerta(float vetor[]){
-
+void alerta(float media[], float alerta[]){
+  float * alerta = calloc(sizeof(float*) * 300);
+  for(int i = 1; i < 299; i++){
+      alerta[i] = (media[i-1] + media[i] + media[i+1])/3;
+  }
 }
 
 
 int main(){
 
-  float sensores[300];
+  float sensores[300], media[300], alerta[300];
   int janela = 1;
 
   srand(1);
@@ -24,9 +26,9 @@ int main(){
     sensores[i] = rand() %300;
   }
 
-  media(sensores);
+  media(sensores, media);
 
-  alerta(media);
+  alerta(media, alerta);
 
 return 0;
 }
