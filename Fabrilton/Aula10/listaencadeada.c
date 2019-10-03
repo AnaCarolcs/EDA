@@ -1,4 +1,5 @@
-
+//quando temos uma variável normal, usamos "p.prox" para referenciar alguma coisa, quando usamos ponteiros,
+// a nomenclatura é "p->prox"
 
 struct TNo{
   int Numero;
@@ -61,7 +62,7 @@ TNo *ExcluiCalda(TNo *pLista){
   TNo *pAux;
   pAux = pLista;
 
-  while (pAux->Prox->Prox != NULL)
+  while (pAux->Prox->Prox != NULL)//Percorre até o nó nulo, pois o nó nulo corresponde ao último valor
     pAux = pAux->Prox;
 
   free(pAux->Prox);
@@ -73,7 +74,7 @@ TNo *ExcluiChave(TNo *pLista, int pChave){
   TNo *pAnt, *pPost;
   pAnt = pLista;
 
-  while (pAnt->Prox->Numero != pChave)
+  while (pAnt->Prox->Numero != pChave)//percorre até achar o valor que deseja excluir
     pAnt = pAnt->Prox;
 
   pPost = pAnt->Prox->Prox;
