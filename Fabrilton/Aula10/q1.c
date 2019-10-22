@@ -13,8 +13,7 @@ struct TNo {
     struct TNo *Prox;
 };
 
-struct TNo *IncluiCabeca(struct TNo *pLista, int pValor)
-{
+struct TNo *IncluiCabeca(struct TNo *pLista, int pValor){
     struct TNo *pNovoNo;
     pNovoNo = (struct TNo *) malloc(sizeof(struct TNo));
     pNovoNo->Numero = pValor;
@@ -23,8 +22,7 @@ struct TNo *IncluiCabeca(struct TNo *pLista, int pValor)
     return pLista;
 }
 
-struct TNo *IncluiCalda(struct TNo *pLista, int pValor)
-{
+struct TNo *IncluiCalda(struct TNo *pLista, int pValor){
     struct TNo *pNovoNo, *pAux;
     pNovoNo = (struct TNo *) malloc(sizeof(struct TNo));
     pNovoNo->Numero = pValor;
@@ -41,8 +39,7 @@ struct TNo *IncluiCalda(struct TNo *pLista, int pValor)
     return pLista;
 }
 
-struct TNo *ExcluiCabeca(struct TNo *pLista, int i)
-{
+struct TNo *ExcluiCabeca(struct TNo *pLista, int i){
     if (pLista == NULL) {
         return pLista;
     }
@@ -53,8 +50,7 @@ struct TNo *ExcluiCabeca(struct TNo *pLista, int i)
     return pLista;
 }
 
-struct TNo *ExcluiCalda(struct TNo *pLista, int i)
-{
+struct TNo *ExcluiCalda(struct TNo *pLista, int i){
     if (pLista == NULL) {
         return pLista;
     }
