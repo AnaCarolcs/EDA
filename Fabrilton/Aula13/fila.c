@@ -58,9 +58,7 @@ bool enfileira(TFila *fila, TElemento *elemento){
         fila->primeiro = novono;
         fila->ultimo = novono;
     } else {
-        fila->ultimo->prox->valor = valor;
-        fila->ultimo->prox->prox = NULL;
-        fila->ultimo = fila->ultimo->prox;
+
     }
   fila->tamanho++;
   return true;
