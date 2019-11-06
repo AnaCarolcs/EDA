@@ -1,0 +1,41 @@
+Codigo  Curso Local
+55  Administracao 566
+23  Arqueologia 604
+201 Arquivologia  576
+9 Artes Visuais 274
+77  Biblioteconomia 324
+66  Ciencias Biologicas Bacharelado 752
+4 Ciencias Biologicas Licenciatura  108
+38  Ciencias Contabeis  142
+88  Ciencias Economicas 580
+31  Direito Diurno  367
+46  Direito Noturno 995
+45  Educacao Fisica 469
+20  Enfermagem  129
+99  Eng. Alimentos  255
+21  Eng. Automacao  127
+27  Eng. Bioquimica 337
+76  Eng. Civil  580
+49  Eng. Civil Empresarial  101
+60  Eng. Civil, Costeira e Portuaria  929
+51  Eng. Computacao 291
+40  Eng. Mecanica 635
+29  Eng. Mecanica Empresarial 357
+5 Eng. Mecanica Naval 102
+13  Eng. Quimica  812
+48  Geografia Bacharelado 567
+56  Geografia Licenciatura  822
+76  Historia Licenciatura 648
+53  Letras Portugues/Espanhol Diurno  544
+95  Letras Portugues /Espanhol Noturno  814
+35  Letras Portugues /Ingles  785
+26  Letras/Portugues  143
+64  Matematica Licenciatura 662
+57  Medicina  361
+1 Oceanologia 103
+90  Pedagogia Diurno  581
+98  Pedagogia Noturno 771
+50  Psicologia  945
+20  Quimica Licenciatura  631
+92  Sistemas de Informacao  131
+3 Tecnologia em Gestao Ambiental  850
