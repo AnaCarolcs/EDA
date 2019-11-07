@@ -186,80 +186,91 @@ void ImprimeServicoInvertida(TDescritorS *pLSer){
 }
 
 //###################ÁREA PARA COLOCAR SUA RESPOSTA - INICIO ######################
-
 void CriaListaUnificada(TNoI *pInd, TNoC *pCom, TDescritorS *pServ, TDescritorU *pListaUnica){
 
+    TNoU *Uaux;
 
-    TNoU *Uaux, *novoNO;
+    pListaUnica->Inicio = (TNoU *) malloc(sizeof(TNoU));
+    pListaUnica->Inicio->Dados = (TCadastroU *) malloc(sizeof(TCadastroU));
+
+    pListaUnica->Inicio->Ant = NULL;
     Uaux = pListaUnica->Inicio;
-    Uaux = (TNoU *) malloc(sizeof(TNoU)); //invertida
-    Uaux->Ant = NULL; //adicionada
 
-    novoNO = (TNoU *) malloc(sizeof(TNoU));
-    novoNO->Dados = (TCadastroU *) malloc(sizeof(TCadastroU)); //adicionada
-    novoNO->Ant = NULL;
+    TNoI *Iaux = pInd;
+    TNoC *Caux = pCom;
+    TNoS *Saux = pServ->Inicio;
 
-    TNoI *noAuxI = pInd;
-    TNoC *noAuxC = pCom;
-    TNoS *noAuxS = pServ->Inicio;
+    do {
+        if (Iaux != NULL) {
+            strcpy(Uaux->Dados->CNPJ, Iaux->Dados->CNPJ);
+            strcpy(Uaux->Dados->RazaoSocial, Iaux->Dados->RazaoSocial);
+            strcpy(Uaux->Dados->Cidade, Iaux->Dados->Cidade);
+            strcpy(Uaux->Dados->Fone, Iaux->Dados->Fone);
 
-    do{
-        //Industria
-        strcpy(novoNO->Dados->CNPJ, noAuxI->Dados->CNPJ);
-        strcpy(novoNO->Dados->RazaoSocial, noAuxI->Dados->RazaoSocial);
-        strcpy(novoNO->Dados->Cidade, noAuxI->Dados->Cidade);
-        strcpy(novoNO->Dados->Fone, noAuxI->Dados->Fone);
+            Uaux->Dados->Tipo = 'I';
+            pListaUnica->Tamanho++;
 
-        novoNO->Dados->Tipo = 'I';
-        noAuxI = noAuxI->Prox;
-        pListaUnica->Tamanho++;
+            Iaux = Iaux->Prox;
 
-        novoNO->Ant = Uaux;
-        Uaux->Prox = novoNO;
+            Uaux->Prox = (TNoU *) malloc(sizeof(TNoU));
+            Uaux->Prox->Dados = (TCadastroU *) malloc(sizeof(TCadastroU));
 
-        Uaux->Prox = (TNoU *) malloc(sizeof(TNoU));
-        Uaux = Uaux->Prox;
+            Uaux->Prox->Ant = Uaux;
+            Uaux = Uaux->Prox;
+        }
 
-        //Comercio
-        strcpy(novoNO->Dados->CNPJ, noAuxC->Dados->CNPJ);
-        strcpy(novoNO->Dados->RazaoSocial, noAuxC->Dados->RazaoSocial);
-        strcpy(novoNO->Dados->Cidade, noAuxC->Dados->Cidade);
-        strcpy(novoNO->Dados->Fone, noAuxC->Dados->Fone);
+        if (Caux != NULL) {
+            strcpy(Uaux->Dados->CNPJ, Caux->Dados->CNPJ);
+            strcpy(Uaux->Dados->RazaoSocial, Caux->Dados->RazaoSocial);
+            strcpy(Uaux->Dados->Cidade, Caux->Dados->Cidade);
+            strcpy(Uaux->Dados->Fone, Caux->Dados->Fone);
 
-        novoNO->Dados->Tipo = 'C';
-        noAuxC = noAuxC->Prox;
-        pListaUnica->Tamanho++;
+            Uaux->Dados->Tipo = 'C';
+            pListaUnica->Tamanho++;
 
-        novoNO->Ant = Uaux;
-        Uaux->Prox = novoNO;
+            Caux = Caux->Prox;
 
-        Uaux->Prox = (TNoU *) malloc(sizeof(TNoU));
-        Uaux = Uaux->Prox;
+            Uaux->Prox = (TNoU *) malloc(sizeof(TNoU));
+            Uaux->Prox->Dados = (TCadastroU *) malloc(sizeof(TCadastroU));
 
-        //Servico
-        strcpy(novoNO->Dados->CNPJ, noAuxS->Dados->CNPJ);
-        strcpy(novoNO->Dados->RazaoSocial, noAuxS->Dados->RazaoSocial);
-        strcpy(novoNO->Dados->Cidade, noAuxS->Dados->Cidade);
-        strcpy(novoNO->Dados->Fone, noAuxS->Dados->Fone);
+            Uaux->Prox->Ant = Uaux;
+            Uaux = Uaux->Prox;
 
-        novoNO->Dados->Tipo = 'S';
-        noAuxS = noAuxS->Prox;
-        pListaUnica->Tamanho++;
+            if (Caux == pCom) {
+                Caux = NULL;
+            }
+        }
 
-        novoNO->Ant = Uaux;
-        Uaux->Prox = novoNO;
+        if (Saux != NULL) {
+            strcpy(Uaux->Dados->CNPJ, Saux->Dados->CNPJ);
+            strcpy(Uaux->Dados->RazaoSocial, Saux->Dados->RazaoSocial);
+            strcpy(Uaux->Dados->Cidade, Saux->Dados->Cidade);
+            strcpy(Uaux->Dados->Fone, Saux->Dados->Fone);
 
-        Uaux->Prox = (TNoU *) malloc(sizeof(TNoU));
-        Uaux = Uaux->Prox;
+            Uaux->Dados->Tipo = 'S';
+            pListaUnica->Tamanho++;
 
-    }while ((noAuxI != NULL) && (noAuxC != NULL) && (noAuxS != NULL));
+            Saux = Saux->Prox;
 
+            Uaux->Prox = (TNoU *) malloc(sizeof(TNoU));
+            Uaux->Prox->Dados = (TCadastroU *) malloc(sizeof(TCadastroU));
+
+            Uaux->Prox->Ant = Uaux;
+            Uaux = Uaux->Prox;
+        }
+
+    } while ((Iaux != NULL) || (Caux != NULL) || (Saux != NULL));
+
+    pListaUnica->Inicio->Ant = NULL;
+    pListaUnica->Fim = Uaux->Ant;
+    pListaUnica->Fim->Prox = NULL;
+
+    free(Uaux);
 }
+
 
 //###################ÁREA PARA COLOCAR SUA RESPOSTA - FIM ######################
 
-
-//Listar Conteúdo da lista Unificada:
 void ImprimeUnificada(TDescritorU *pListaUnica){
     TNoU *plista = pListaUnica->Inicio;
     printf("                     LISTA UNIFICADA\n");
