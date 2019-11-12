@@ -186,7 +186,8 @@ void ImprimeServicoInvertida(TDescritorS *pLSer){
 }
 
 //###################ÁREA PARA COLOCAR SUA RESPOSTA - INICIO ######################
-void CriaListaUnificada(TNoI *pInd, TNoC *pCom, TDescritorS *pServ, TDescritorU *pListaUnica){
+
+/*void CriaListaUnificada(TNoI *pInd, TNoC *pCom, TDescritorS *pServ, TDescritorU *pListaUnica){
 
     TNoU *Uaux;
 
@@ -200,72 +201,133 @@ void CriaListaUnificada(TNoI *pInd, TNoC *pCom, TDescritorS *pServ, TDescritorU 
     TNoC *Caux = pCom;
     TNoS *Saux = pServ->Inicio;
 
-    do {
+    //test(Iaux);
+
+    while ((Iaux != NULL) || (Caux != pCom) || (Saux != NULL)){
+
         if (Iaux != NULL) {
-            strcpy(Uaux->Dados->CNPJ, Iaux->Dados->CNPJ);
-            strcpy(Uaux->Dados->RazaoSocial, Iaux->Dados->RazaoSocial);
-            strcpy(Uaux->Dados->Cidade, Iaux->Dados->Cidade);
-            strcpy(Uaux->Dados->Fone, Iaux->Dados->Fone);
-
-            Uaux->Dados->Tipo = 'I';
-            pListaUnica->Tamanho++;
-
-            Iaux = Iaux->Prox;
-
-            Uaux->Prox = (TNoU *) malloc(sizeof(TNoU));
-            Uaux->Prox->Dados = (TCadastroU *) malloc(sizeof(TCadastroU));
-
-            Uaux->Prox->Ant = Uaux;
-            Uaux = Uaux->Prox;
+            //test(Iaux,NULL,NULL,Uaux);
         }
 
-        if (Caux != NULL) {
-            strcpy(Uaux->Dados->CNPJ, Caux->Dados->CNPJ);
-            strcpy(Uaux->Dados->RazaoSocial, Caux->Dados->RazaoSocial);
-            strcpy(Uaux->Dados->Cidade, Caux->Dados->Cidade);
-            strcpy(Uaux->Dados->Fone, Caux->Dados->Fone);
-
-            Uaux->Dados->Tipo = 'C';
-            pListaUnica->Tamanho++;
-
-            Caux = Caux->Prox;
-
-            Uaux->Prox = (TNoU *) malloc(sizeof(TNoU));
-            Uaux->Prox->Dados = (TCadastroU *) malloc(sizeof(TCadastroU));
-
-            Uaux->Prox->Ant = Uaux;
-            Uaux = Uaux->Prox;
-
-            if (Caux == pCom) {
-                Caux = NULL;
-            }
+        /*if (Caux != pCom) {
+            //test(NULL,Caux,NULL,Uaux);
         }
 
         if (Saux != NULL) {
-            strcpy(Uaux->Dados->CNPJ, Saux->Dados->CNPJ);
-            strcpy(Uaux->Dados->RazaoSocial, Saux->Dados->RazaoSocial);
-            strcpy(Uaux->Dados->Cidade, Saux->Dados->Cidade);
-            strcpy(Uaux->Dados->Fone, Saux->Dados->Fone);
-
-            Uaux->Dados->Tipo = 'S';
-            pListaUnica->Tamanho++;
-
-            Saux = Saux->Prox;
-
-            Uaux->Prox = (TNoU *) malloc(sizeof(TNoU));
-            Uaux->Prox->Dados = (TCadastroU *) malloc(sizeof(TCadastroU));
-
-            Uaux->Prox->Ant = Uaux;
-            Uaux = Uaux->Prox;
+            //test(NULL,NULL,Saux,Uaux);
         }
-
-    } while ((Iaux != NULL) || (Caux != NULL) || (Saux != NULL));
+    }
 
     pListaUnica->Inicio->Ant = NULL;
     pListaUnica->Fim = Uaux->Ant;
     pListaUnica->Fim->Prox = NULL;
 
     free(Uaux);
+}
+
+/*void test(TNoI *Iaux, TNoC *Caux,TNoS *Saux,TNoU *Uaux){
+
+    strcpy(Uaux->Dados->CNPJ, Gaux->Dados->CNPJ);
+    strcpy(Uaux->Dados->RazaoSocial, Gaux->Dados->RazaoSocial);
+    strcpy(Uaux->Dados->Cidade, Gaux->Dados->Cidade);
+    strcpy(Uaux->Dados->Fone, Gaux->Dados->Fone);
+
+    Uaux->Dados->Tipo = 'I';
+    pListaUnica->Tamanho++;
+
+    Gaux = Gaux->Prox;
+
+    Uaux->Prox = (TNoU *) malloc(sizeof(TNoU));
+    Uaux->Prox->Dados = (TCadastroU *) malloc(sizeof(TCadastroU));
+
+    Uaux->Prox->Ant = Uaux;
+    Uaux = Uaux->Prox;
+}*/
+
+void CriaListaUnificada(TNoI *pInd, TNoC *pCom, TDescritorS *pServ, TDescritorU *pListaUnica){
+
+    TNoU *NoUaux;
+
+    pListaUnica->Inicio = (TNoU *) malloc(sizeof(TNoU));
+    pListaUnica->Inicio->Dados = (TCadastroU *) malloc(sizeof(TCadastroU));
+
+    pListaUnica->Inicio->Ant = NULL;
+    NoUaux = pListaUnica->Inicio;
+
+    TNoI *NoIaux = pInd;
+    TNoC *NoCaux = pCom;
+    TNoS *NoSaux = pServ->Inicio;
+
+    while ((NoIaux != NULL) || (NoCaux != NULL) || (NoSaux != NULL)) {
+
+        if (NoIaux != NULL) {
+
+            strcpy(NoUaux->Dados->CNPJ, NoIaux->Dados->CNPJ);
+            strcpy(NoUaux->Dados->RazaoSocial, NoIaux->Dados->RazaoSocial);
+            strcpy(NoUaux->Dados->Cidade, NoIaux->Dados->Cidade);
+            strcpy(NoUaux->Dados->Fone, NoIaux->Dados->Fone);
+
+            NoUaux->Dados->Tipo = 'I';
+            pListaUnica->Tamanho++;
+
+            NoIaux = NoIaux->Prox;
+
+            NoUaux->Prox = (TNoU *) malloc(sizeof(TNoU));
+            NoUaux->Prox->Dados = (TCadastroU *) malloc(sizeof(TCadastroU));
+
+            NoUaux->Prox->Ant = NoUaux;
+            NoUaux = NoUaux->Prox;
+        }
+
+        if (NoCaux != NULL) {
+
+            strcpy(NoUaux->Dados->CNPJ, NoCaux->Dados->CNPJ);
+            strcpy(NoUaux->Dados->RazaoSocial, NoCaux->Dados->RazaoSocial);
+            strcpy(NoUaux->Dados->Cidade, NoCaux->Dados->Cidade);
+            strcpy(NoUaux->Dados->Fone, NoCaux->Dados->Fone);
+
+            NoUaux->Dados->Tipo = 'C';
+            pListaUnica->Tamanho++;
+
+            NoCaux = NoCaux->Prox;
+
+            NoUaux->Prox = (TNoU *) malloc(sizeof(TNoU));
+            NoUaux->Prox->Dados = (TCadastroU *) malloc(sizeof(TCadastroU));
+
+            NoUaux->Prox->Ant = NoUaux;
+            NoUaux = NoUaux->Prox;
+
+            if (NoCaux == pCom) {
+                NoCaux = NULL;
+            }
+        }
+
+        if (NoSaux != NULL) {
+
+            strcpy(NoUaux->Dados->CNPJ, NoSaux->Dados->CNPJ);
+            strcpy(NoUaux->Dados->RazaoSocial, NoSaux->Dados->RazaoSocial);
+            strcpy(NoUaux->Dados->Cidade, NoSaux->Dados->Cidade);
+            strcpy(NoUaux->Dados->Fone, NoSaux->Dados->Fone);
+
+            NoUaux->Dados->Tipo = 'S';
+            pListaUnica->Tamanho++;
+
+            NoSaux = NoSaux->Prox;
+
+            NoUaux->Prox = (TNoU *) malloc(sizeof(TNoU));
+            NoUaux->Prox->Dados = (TCadastroU *) malloc(sizeof(TCadastroU));
+
+            NoUaux->Prox->Ant = NoUaux;
+            NoUaux = NoUaux->Prox;
+        }
+
+    }
+
+    pListaUnica->Inicio->Ant = NULL;
+    pListaUnica->Fim = NoUaux->Ant;
+    pListaUnica->Fim->Prox = NULL;
+
+    free(NoUaux);
 }
 
 
